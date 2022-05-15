@@ -11,15 +11,24 @@ class Moderation(commands.cog):
     @commands.bot_has_guild_permissions(ban_members=True)
     @commands.has_permissions(ban_members=True)
     async def ban(self, ctx: commands.Context, user: c.discord.Member, *, reason: str = None):
-        await user.ban(reason=reason)
-        await ctx.send("Banned <@{user.id}>%s".format(user=user) % ('.' if reason is None else " With Reason: '{}'.".format(reason)))
+        try:
+            await user.ban(reason=reason)
+            await ctx.send("Banned <@{user.id}>%s".format(user=user) % ('.' if reason is None else " With Reason: '{}'.".format(reason)))
+        except c.discord.NotFound:
+            await ctx.send("<@{user.id}> is not found.".format(user=user))
     
     @commands.command()
     @commands.bot_has_guild_permissions(ban_members=True)
     @commands.has_permissions(ban_members=True)
     async def unban(self, ctx: commands.Context, user: c.discord.Member, *, reason: str = None):
-        await user.unban(reason=reason)
-        await ctx.send("Unbanned <@{user.id}>%s".format(user=user) % ('.' if reason is None else " With Reason: '{}'.".format(reason)))
+        try:
+            user_ban_entry_exists = await ctx.message.guild.fetch_ban(user)
+            if not user_ban_entry_exists:
+                await ctx.send("<@{user.id}> is not found.".format(user=user))
+            await user.unban(reason=reason)
+            await ctx.send("Unbanned <@{user.id}>%s".format(user=user) % ('.' if reason is None else " With Reason: '{}'.".format(reason)))
+        except c.discord.NotFound:
+            await ctx.send("<@{user.id}> is not found.".format(user=user))
     
     @commands.command(aliases=['rmuserspam'])
     @commands.bot_has_guild_permissions(manage_messages=True)
