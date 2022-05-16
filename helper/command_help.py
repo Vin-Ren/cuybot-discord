@@ -195,3 +195,6 @@ list_help_cmd = [
         "cooldown": 3
     },
 ]
+
+
+list_help_cmd_hashmap = {i['name'] for i in list_help_cmd}
