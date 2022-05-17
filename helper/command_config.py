@@ -82,11 +82,10 @@ class CommandConfig:
 
 
 def command(name: str, flags: ConfigFlags = None):
-    try:
-        def decorator(func):
-            kwargs = list_help_cmd_hashmap[name]
-            kwargs.update(flags=flags) if flags is not None else None
-            return CommandConfig(**kwargs)(func)
-        return decorator
-    except KeyError:
+    if list_help_cmd_hashmap.get(name, None) is None:
         raise RuntimeError("Given name={} does not exists in command configuration list.".format(name))
+    def decorator(func):
+        kwargs = list_help_cmd_hashmap[name]
+        kwargs.update(flags=flags) if flags is not None else None
+        return CommandConfig(**kwargs)(func)
+    return decorator
