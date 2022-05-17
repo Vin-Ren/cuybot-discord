@@ -4,7 +4,7 @@ from discord.ext import commands
 from typing import List, Dict, Union
 
 from prepared_decorator import Cooldown, Command, DecoratorPriority, HasPerms, BotHasPerms
-from commands_config import list_help_cmd_hashmap
+from commands_config import commands_config
 
 
 class ConfigFlags(IntFlag):
@@ -82,10 +82,10 @@ class CommandConfig:
 
 
 def command(name: str, flags: ConfigFlags = None):
-    if list_help_cmd_hashmap.get(name, None) is None:
-        raise RuntimeError("Given name={} does not exists in command configuration list.".format(name))
+    if commands_config.get(name, None) is None:
+        raise RuntimeError("Given name='{}' does not exists in command configuration list.".format(name))
     def decorator(func):
-        kwargs = list_help_cmd_hashmap[name]
+        kwargs = commands_config[name]
         kwargs.update(flags=flags) if flags is not None else None
         return CommandConfig(**kwargs)(func)
     return decorator

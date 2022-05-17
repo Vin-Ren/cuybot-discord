@@ -1,4 +1,6 @@
-list_help_cmd = [
+
+
+commands_config_array = [
     {
         # root command for easy selected
         "name": "help", 
@@ -197,4 +199,4 @@ list_help_cmd = [
 ]
 
 
-list_help_cmd_hashmap = {i['name']: i for i in list_help_cmd}
+commands_config = {i['name']: i for i in commands_config_array}
