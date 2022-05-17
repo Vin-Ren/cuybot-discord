@@ -78,14 +78,14 @@ class Command(BasePreparedDecorator):
     _DECORATOR_FUNCTION = commands.command
     _PRIORITY = DecoratorPriority.LAST
     
-    def __init__(self, name: str, aliases: List[str] = [], brief: str = None, usage: str = None, description: str = None):
+    def __init__(self, name: str, aliases: List[str] = [], brief: str = '', usage: str = '', description: str = ''):
         super().__init__(name=name, aliases=aliases, brief=brief, usage=usage, description=description)
 
 
 class Cooldown(BasePreparedDecorator):
     __slots__ = ['rate', 'per', 'type']
     
-    _DECORATOR_FUNCTION = commands.Cooldown
+    _DECORATOR_FUNCTION = commands.cooldown
     _PRIORITY = DecoratorPriority.LOW
     
     def __init__(self, rate: int, per: int, type: commands.BucketType.default):

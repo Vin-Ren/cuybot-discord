@@ -197,4 +197,4 @@ list_help_cmd = [
 ]
 
 
-list_help_cmd_hashmap = {i['name'] for i in list_help_cmd}
+list_help_cmd_hashmap = {i['name']: i for i in list_help_cmd}
