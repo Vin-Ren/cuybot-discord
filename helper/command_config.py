@@ -23,24 +23,35 @@ class ConfigFlags(IntFlag):
     BOT_HAS_PERMS = 16
 
 
+class DecoratorEntry:
+    def __init__(self, flag: ConfigFlags, decorator_class: type, keyword: str = None, initializer: callable = None):
+        self.flag = flag
+        self.decorator_class = decorator_class
+        self.keyword = keyword if keyword is not None else flag.name.lower()
+        self.initializer = initializer if initializer is not None else decorator_class
+
+
 class CommandConfig:
     __slots__ = ['name', 'command', 'desc', 'usage', 'aliases', 'additional_decorators']
     
     _DEFAULTS  = {}
     
+    _DECORATORS = [DecoratorEntry(ConfigFlags.COOLDOWN, Cooldown, lambda cd: Cooldown(1, cd, commands.BucketType.user)),
+                   DecoratorEntry(ConfigFlags.HAS_PERMS, HasPerms),
+                   DecoratorEntry(ConfigFlags.BOT_HAS_PERMS, BotHasPerms)
+                   ]
+    
     def __init__(self, name: str, command: str, desc: str, usage: str, aliases: List[str], 
-                 cooldown: Union[Cooldown, int] = None, 
-                 has_perms: Union[HasPerms, Dict[str, bool]] = None, 
-                 bot_has_perms: Union[BotHasPerms, Dict[str, bool]] = None, 
-                 flags: ConfigFlags = ConfigFlags.all_enabled()):
+                 flags: ConfigFlags = ConfigFlags.all_enabled(),
+                 **kwargs):
         self.name = name
         self.command = command
         self.desc = desc
         self.usage = usage
         self.aliases = aliases
-        self.additional_decorators = {ConfigFlags.COOLDOWN: cooldown if isinstance(cooldown, (Cooldown, None.__class__)) else Cooldown(1, cooldown, commands.BucketType.user), 
-                                      ConfigFlags.HAS_PERMS: has_perms if isinstance(has_perms, (HasPerms, None.__class__)) else HasPerms(has_perms), 
-                                      ConfigFlags.BOT_HAS_PERMS: bot_has_perms if isinstance(bot_has_perms, (BotHasPerms, None.__class__)) else HasPerms(bot_has_perms)}
+        
+        self.additional_decorators = {e.flag: kwargs[e.keyword] if isinstance(kwargs[e.keyword], (e.decorator_class, None.__class__)) else e.initializer(kwargs[e.keyword]) for e in self.__class__._DECORATORS}
+        
         self.flags = flags
 
     def get_decorator(self):
@@ -68,8 +79,6 @@ class CommandConfig:
     def __call__(self, function):
         return self.get_decorator()(function)
 
-# TODO: make another class/function (prefferably function) to lookup the values for init for CommandConfig with given 'id' or 'name'
-# Then used like @command(name='help'). it will create a CommandConfig object and apply the decorator to the decorated function.
 
 def command(name: str, flags: ConfigFlags = None):
     try:
