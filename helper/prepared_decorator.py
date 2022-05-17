@@ -41,7 +41,7 @@ class BasePreparedDecorator:
     """
     __slots__ = []
     _OPT_OUT_SLOTS = ['__dict__']
-    _USE_SLOTS = True    
+    _USE_SLOTS = True
     _DECORATOR_FUNCTION = None
     _PRIORITY = DecoratorPriority.LOWEST
     
@@ -104,4 +104,3 @@ class HasPerms(BasePreparedDecoratorNoSlots):
 
 class BotHasPerms(HasPerms):
     _DECORATOR_FUNCTION = commands.bot_has_permissions
-

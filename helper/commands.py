@@ -3,7 +3,7 @@ from discord.ext import commands
 
 from typing import List, Dict, Union
 
-from command_prepared_decorator import Cooldown, Command, DecoratorPriority, HasPerms, BotHasPerms
+from prepared_decorator import Cooldown, Command, DecoratorPriority, HasPerms, BotHasPerms
 from command_help import list_help_cmd_hashmap
 
 
