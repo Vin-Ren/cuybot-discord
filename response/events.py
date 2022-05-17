@@ -1,5 +1,5 @@
 import helper.constants as c
-import helper.discord as d
+import helper.embeed as d
 from discord.ext import commands
 
 class Events(c.cog):

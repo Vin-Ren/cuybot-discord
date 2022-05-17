@@ -1,4 +1,4 @@
-import helper.discord as d
+import helper.embeed as d
 import helper.constants as c
 import helper.command_help as cmd
 from discord.ext import commands

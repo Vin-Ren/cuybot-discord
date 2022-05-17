@@ -1,6 +1,6 @@
 import helper.constants as c
 from discord.ext import commands
-import helper.discord as d
+import helper.embeed as d
 import helper.command_help as cmd
 
 cmd_invite = next(filter(lambda x: x['name'] == "invite", cmd.list_help_cmd))

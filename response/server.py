@@ -1,5 +1,5 @@
 import helper.constants as c
-import helper.discord as d
+import helper.embeed as d
 import os
 import subprocess
 import json
