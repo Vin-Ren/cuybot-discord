@@ -1,7 +1,7 @@
 import helper.constants as c
 import api.data_face as api
 import discord
-import helper.command_help as cmd
+import helper.commands_config as cmd
 from discord.ext import commands
 
 command = next(filter(lambda x: x['name'] == "wajah", cmd.list_help_cmd))

@@ -1,7 +1,7 @@
 import api.data_lirik as api
 import helper.constants as c
 import helper.embeed as d
-import helper.command_help as cmd
+import helper.commands_config as cmd
 from discord.ext import commands
 
 command = next(filter(lambda x: x['name'] == "lirik", cmd.list_help_cmd))

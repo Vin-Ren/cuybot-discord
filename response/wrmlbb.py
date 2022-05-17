@@ -1,5 +1,5 @@
 import helper.constants as c
-import helper.command_help as cmd
+import helper.commands_config as cmd
 from discord.ext import commands
 
 command = next(filter(lambda x: x['name'] == "wrcal", cmd.list_help_cmd))

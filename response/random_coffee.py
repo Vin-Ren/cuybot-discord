@@ -1,7 +1,7 @@
 import api.data_coffee as api
 import helper.constants as c
 import discord
-import helper.command_help as cmd
+import helper.commands_config as cmd
 from discord.ext import commands
 
 command = next(filter(lambda x: x['name'] == "ngopi", cmd.list_help_cmd))

@@ -4,7 +4,7 @@ from discord.ext import commands
 from typing import List, Dict, Union
 
 from prepared_decorator import Cooldown, Command, DecoratorPriority, HasPerms, BotHasPerms
-from command_help import list_help_cmd_hashmap
+from commands_config import list_help_cmd_hashmap
 
 
 class ConfigFlags(IntFlag):

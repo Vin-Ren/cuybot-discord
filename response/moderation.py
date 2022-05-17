@@ -1,4 +1,4 @@
-import helper.command_help as cmd
+import helper.commands_config as cmd
 import helper.constants as c
 from discord.ext import commands
 
