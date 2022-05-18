@@ -3,8 +3,8 @@ from discord.ext import commands
 
 from typing import List, Dict, Union
 
-from prepared_decorator import Cooldown, Command, DecoratorPriority, HasPerms, BotHasPerms
-from commands_config import commands_config
+from helper.prepared_decorator import Cooldown, Command, DecoratorPriority, HasPerms, BotHasPerms
+from helper.commands_config import commands_config
 
 
 class ConfigFlag(IntFlag):
@@ -62,7 +62,7 @@ class CommandConfig:
             # Decorators
             decorators = []
             decorators.append(Command(name=self.name if ConfigFlag.NAME in self.flags else None,
-                                      aliases=self.aliases if ConfigFlag.ALIASES in self.flags else None,
+                                      aliases=self.aliases if ConfigFlag.ALIASES in self.flags else [],
                                       description=self.desc, usage=self.usage))
             decorators.extend([decorator for flag, decorator in self.additional_decorators.items() if flag in self.flags])
             

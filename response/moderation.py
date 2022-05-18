@@ -3,7 +3,7 @@ import helper.constants as c
 from discord.ext import commands
 
 
-class Moderation(commands.cog):
+class Moderation(c.cog):
     def __init__(self, client: commands.Bot):
         self.client = client
     
