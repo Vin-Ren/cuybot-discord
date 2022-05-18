@@ -2,10 +2,8 @@ import random
 import helper.tictactoe as ttt
 from discord_components import DiscordComponents, Button, ButtonStyle
 import helper.constants as c
-import helper.commands_config as cmd
-from discord.ext import commands
+from helper.commands import command
 
-command = next(filter(lambda x: x['name'] == "tictactoe", cmd.list_help_cmd))
 
 class TicTacToeBot(c.cog):
     def __init__(self, client):
@@ -19,8 +17,7 @@ class TicTacToeBot(c.cog):
         self.papan = None
         DiscordComponents(self.client)
 
-    @c.cmd.command(aliases=command["alias"])
-    @commands.cooldown(1, command["cooldown"], commands.BucketType.user)
+    @command("tictactoe")
     async def begin(self, ctx):
 
         user_message = ctx.message.content

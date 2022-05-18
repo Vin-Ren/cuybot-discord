@@ -1,15 +1,13 @@
 import helper.constants as c
 import api.data_covid as api
-import helper.commands_config as cmd
-from discord.ext import commands
+from helper.commands import command
 
-command = next(filter(lambda x: x['name'] == "covid", cmd.list_help_cmd))
+
 class Covid(c.cog):
     def __init__(self, client):
         self.client = client
 
-    @c.cmd.command(aliases=command["alias"])
-    @commands.cooldown(1, command["cooldown"], commands.BucketType.user)
+    @command("covid")
     async def find_covid(self, ctx):
         bot_send = ctx.message.reply
         odp = api.get_covid_data('data', 'jumlah_odp', '')

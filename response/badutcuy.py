@@ -1,20 +1,17 @@
 import random
 import api.data_user_request as api
 import helper.constants as c
-import helper.commands_config as cmd
-from discord.ext import commands
-
-command = next(filter(lambda x: x['name'] == "badut", cmd.list_help_cmd))
+from helper.commands import command, ConfigFlag
 
 canvas = []
 end = True
+
 
 class BadutStart(c.cog):
     def __init__(self, client):
         self.client = client
         
-    @c.cmd.command(aliases=command["alias"])
-    @commands.cooldown(1, command["cooldown"], commands.BucketType.user)
+    @command("badut")
     async def begin_badut(self, ctx):
         user_message = ctx.message.content
         bot_send = ctx.message.reply
@@ -56,8 +53,7 @@ class BadutStart(c.cog):
                 #game lagi jalan tapi ada user yang pengen ikutan
                 await bot_send(":raised_hand: bentar tunggu game selesai dulu cuy! chill...:raised_hand:")
     
-    @c.cmd.command()
-    @commands.cooldown(1, command["cooldown"], commands.BucketType.user)
+    @command("badut", flags=ConfigFlag.COOLDOWN)
     async def atk(self, ctx):
         sender = ctx.message.author
         user_message = ctx.message.content
@@ -112,8 +108,7 @@ class BadutStart(c.cog):
                 else:
                     await bot_say("Yo ramein mulai game **BADUTCUY** dengan cara ketik `cuy/badut start`")
     
-    @c.cmd.command(name="game")
-    @commands.cooldown(1, command["cooldown"], commands.BucketType.user)
+    @command("badut", flags=ConfigFlag.COOLDOWN)
     async def stop(self, ctx):
         user_message = ctx.message.content
         bot_say = ctx.message.channel.send

@@ -1,17 +1,15 @@
 import helper.embeed as d
 import helper.constants as c
 import helper.commands_config as cmd
-from discord.ext import commands
+from helper.commands import command
 
-command = next(filter(lambda x: x['name'] == "help", cmd.list_help_cmd))
 
 class Bot_Help(c.cog):
   def __init__(self, client):
     self.client = client
 
   
-  @c.cmd.command(aliases=command["alias"])
-  @commands.cooldown(1, command["cooldown"], commands.BucketType.user)
+  @command("help")
   async def menu_help(self, ctx):
     bot_send = ctx.message.reply
     user_message = ctx.message.content
@@ -21,11 +19,10 @@ class Bot_Help(c.cog):
 
     if len(help_message) == 2:
       help_command = help_message[1].lower()
-
       try:
-        select_help = next(filter(lambda x: x['name'] == help_command, cmd.list_help_cmd))
+        select_help = next(filter(lambda x: x['name'] == help_command, cmd.commands_config_array))
       except:
-        select_help = next(filter(lambda x: help_command in x['alias'], cmd.list_help_cmd))
+        select_help = next(filter(lambda x: help_command in x['aliases'], cmd.commands_config_array))
         
 
       embed = d.embeed_help(

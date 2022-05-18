@@ -1,17 +1,14 @@
 import api.data_coffee as api
 import helper.constants as c
 import discord
-import helper.commands_config as cmd
-from discord.ext import commands
+from helper.commands import command
 
-command = next(filter(lambda x: x['name'] == "ngopi", cmd.list_help_cmd))
 
 class Coffee(c.cog):
     def __init__(self, client):
         self.client = client
 
-    @c.cmd.command(aliases=command["alias"])
-    @commands.cooldown(1, command["cooldown"], commands.BucketType.user)
+    @command("ngopi")
     async def find_kopi(self, ctx):
         user_message = ctx.message.content
         bot_send = ctx.message.reply

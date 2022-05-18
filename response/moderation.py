@@ -1,14 +1,13 @@
 import helper.constants as c
 from discord.ext import commands
+from helper.commands import command
 
 
 class Moderation(c.cog):
     def __init__(self, client: commands.Bot):
         self.client = client
     
-    @commands.command()
-    @commands.bot_has_guild_permissions(ban_members=True)
-    @commands.has_permissions(ban_members=True)
+    @command("ban")
     async def ban(self, ctx: commands.Context, user: c.discord.Member, *, reason: str = None):
         try:
             await user.ban(reason=reason)
@@ -19,9 +18,7 @@ class Moderation(c.cog):
             if "missing" in str(exc.args).lower():
                 await ctx.send("Required permissions are missing or the user you are trying to ban have a higher authority than me.")
     
-    @commands.command()
-    @commands.bot_has_guild_permissions(ban_members=True)
-    @commands.has_permissions(ban_members=True)
+    @command("unban")
     async def unban(self, ctx: commands.Context, user: str, *, reason: str = None):
         user_check = lambda u: u == user
         not_found_message = "{user} is not found on the server ban list."
@@ -50,10 +47,8 @@ class Moderation(c.cog):
                 return
         await ctx.send(not_found_message)
     
-    @commands.command(aliases=['rmuserspam', 'rmspam', 'removespam'])
-    @commands.bot_has_guild_permissions(manage_messages=True)
-    @commands.has_permissions(manage_messages=True)
-    async def remove_spam_message(self, ctx: commands.Context, user: c.discord.Member, limit_each_channel: int = 5):
+    @command("rmspam")
+    async def remove_spam(self, ctx: commands.Context, user: c.discord.Member, limit_each_channel: int = 5):
         try:
             deleted = []
             text_channel_count = len(ctx.guild.text_channels)

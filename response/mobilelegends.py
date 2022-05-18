@@ -1,16 +1,13 @@
 import api.data_mobilelegends as api
 import helper.constants as c
-import helper.commands_config as cmd
-from discord.ext import commands
+from helper.commands import command
 
-command = next(filter(lambda x: x['name'] == "mlredeem", cmd.list_help_cmd))
 
 class Mobile_Legends(c.cog):
     def __init__(self, client):
         self.client = client
         
-    @c.cmd.command(aliases=command["alias"])
-    @commands.cooldown(1, command["cooldown"], commands.BucketType.user)
+    @command("mlredeem")
     async def redeem(client, ctx):
         user_message = ctx.message.content
         bot_send = ctx.message.reply

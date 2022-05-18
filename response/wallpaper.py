@@ -1,16 +1,14 @@
 import random
 import api.data_wallpaper as api
 import helper.constants as c
-import helper.commands_config as cmd
-from discord.ext import commands
+from helper.commands import command
 
-command = next(filter(lambda x: x['name'] == "wallpaper", cmd.list_help_cmd))
+
 class Wallpaper(c.cog):
     def __init__(self, client):
         self.client = client
         
-    @c.cmd.command(aliases=command["alias"])
-    @commands.cooldown(1, command["cooldown"], commands.BucketType.user)
+    @command("wallpaper")
     async def fetch(self, ctx):
       bot_send = ctx.message.reply
       user_message = ctx.message.content

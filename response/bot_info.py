@@ -1,18 +1,13 @@
 import helper.constants as c
-from discord.ext import commands
 import helper.embeed as d
-import helper.commands_config as cmd
+from helper.commands import command
 
-cmd_invite = next(filter(lambda x: x['name'] == "invite", cmd.list_help_cmd))
-cmd_status = next(filter(lambda x: x['name'] == "status", cmd.list_help_cmd))
-cmd_hi = next(filter(lambda x: x['name'] == "hi", cmd.list_help_cmd))
 
 class Bot_Info(c.cog):
     def __init__(self, client):
         self.client = client
 
-    @c.cmd.command(aliases=cmd_invite["alias"])
-    @commands.cooldown(1, cmd_invite["cooldown"], commands.BucketType.user)
+    @command("invite")
     async def invite_bot(self,ctx):
         bot_send = ctx.message.reply
 
@@ -29,14 +24,12 @@ class Bot_Info(c.cog):
 
         await bot_send(embed=embed)
 
-    @c.cmd.command(aliases=cmd_status["alias"])
-    @commands.cooldown(1, cmd_status["cooldown"], commands.BucketType.user)
+    @command("status")
     async def check(self, ctx):
         bot_send = ctx.message.reply
         await bot_send(':partying_face: CuyBot Masih Aktif! :partying_face:')
 
-    @c.cmd.command(aliases=cmd_hi["alias"])
-    @commands.cooldown(1, cmd_hi["cooldown"], commands.BucketType.user)
+    @command("hi")
     async def message(self, ctx):
         bot_send = ctx.message.reply
         await bot_send(':partying_face: Oy cuy! :partying_face: \n\nperkenalkan cuy gw bot buatannya dea dan tim :yum:\ngw siap bantu ngasih info info sesuatu yang lu butuhin')

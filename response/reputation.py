@@ -2,17 +2,14 @@ import discord
 import api.data_user_request as api
 import re
 import helper.constants as c
-import helper.commands_config as cmd
-from discord.ext import commands
+from helper.commands import command
 
-command = next(filter(lambda x: x['name'] == "rep", cmd.list_help_cmd))
 
 class Reputation(c.cog):
     def __init__(self, client):
         self.client = client
     
-    @c.cmd.command(aliases=command["alias"])
-    @commands.cooldown(1, command["cooldown"], commands.BucketType.user)
+    @command("rep")
     async def check_rep(self, ctx):
         user_message = ctx.message.content
         sender = ctx.message.author
