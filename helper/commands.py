@@ -84,7 +84,19 @@ class CommandConfig:
         return self.get_decorator()(function)
 
 
-def command(name: str, flags: ConfigFlag = None, **updater_kwargs):
+def command(name: str, flags: ConfigFlag = None, inverse_flags: bool = False, **updater_kwargs):
+    """A decorator that wraps :class:`CommandConfig` with command configurations from commands_config.
+    
+    Parameters
+    ----------
+    name :class:`str`
+        Name of the command, used to search for kwargs from commands_config.
+    flags :class:`ConfigFlag`
+        Flags to be passed to CommandConfig. Flags are used to modify the behaviour of CommandConfig decorators.
+    inverse_flags :class:`bool`
+        Inverse given flags by applying a NOT unary operator on the flags.
+    """
+    flags = ~flags if inverse_flags else flags
     if commands_config.get(name, None) is None:
         raise RuntimeError("Given name='{}' does not exists in command configuration list.".format(name))
     def decorator(func):
