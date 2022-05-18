@@ -7,7 +7,7 @@ commands_config_array = [
         "command": "cuy/help",
         "desc": "Menampilkan list menu command",
         "usage": "cuy/help [command]",
-        "alias": ["help"],
+        "aliases": ["help"],
         "cooldown": 3
     },
     {
@@ -15,7 +15,7 @@ commands_config_array = [
         "command": "cuy/status",
         "desc": "Menampilkan status bot",
         "usage": "cuy/status",
-        "alias": ["status", "stat", "stats", "test", "ping"],
+        "aliases": ["status", "stat", "stats", "test", "ping"],
         "cooldown": 3
     },
     {
@@ -23,7 +23,7 @@ commands_config_array = [
         "command": "cuy/hi",
         "desc": "Menampilkan status bot",
         "usage": "cuy/status",
-        "alias": ["hi", "helo", "hello", "halo"," hai"],
+        "aliases": ["hi", "helo", "hello", "halo"," hai"],
         "cooldown": 3
     },
     {
@@ -31,7 +31,7 @@ commands_config_array = [
         "command": "cuy/berita",
         "desc": "Menampilkan berita",
         "usage": "cuy/berita [kategori berita]",
-        "alias": ["berita"],
+        "aliases": ["berita"],
         "cooldown": 5
     },
     {
@@ -39,7 +39,7 @@ commands_config_array = [
         "command": "cuy/covid",
         "desc": "Menampilkan data menderita covid",
         "usage": "cuy/covid",
-        "alias": ["covid"],
+        "aliases": ["covid"],
         "cooldown": 5
     },
     {
@@ -47,7 +47,7 @@ commands_config_array = [
         "command": "cuy/quotes",
         "desc": "Menampilkan kutipan",
         "usage": "cuy/quotes",
-        "alias": ["quotes", "quote", "kutipan"],
+        "aliases": ["quotes", "quote", "kutipan"],
         "cooldown": 5
     },
     {
@@ -55,7 +55,7 @@ commands_config_array = [
         "command": "cuy/hp",
         "desc": "Menampilkan informasi hp",
         "usage": "cuy/hp [merk hp]",
-        "alias": ["hp", "mobile", "handphone", "phone"],
+        "aliases": ["hp", "mobile", "handphone", "phone"],
         "cooldown": 5
     },
     {
@@ -63,7 +63,7 @@ commands_config_array = [
         "command": "cuy/tiktok",
         "desc": "Menampilkan data menderita covid",
         "usage": "cuy/tiktok [username tiktok]",
-        "alias": ["tiktok", "tt"],
+        "aliases": ["tiktok", "tt"],
         "cooldown": 5
     },
     {
@@ -71,7 +71,7 @@ commands_config_array = [
         "command": "cuy/anime",
         "desc": "Menampilkan data anime",
         "usage": "cuy/anime [nama anime]",
-        "alias": ["anime", "animetod"],
+        "aliases": ["anime", "animetod"],
         "cooldown": 5
     },
     {
@@ -79,7 +79,7 @@ commands_config_array = [
         "command": "cuy/lirik",
         "desc": "Menampilkan lirik lagu",
         "usage": "cuy/lirik [nama lagu]",
-        "alias": ["lirik", "lyric", "lyrics"],
+        "aliases": ["lirik", "lyric", "lyrics"],
         "cooldown": 5
     },
     {
@@ -87,7 +87,7 @@ commands_config_array = [
         "command": "cuy/kamus",
         "desc": "Menampilkan kata dikamus",
         "usage": "cuy/kamus [kata]",
-        "alias": ["kamus", "dict", "dictionary"],
+        "aliases": ["kamus", "dict", "dictionary"],
         "cooldown": 5
     },
     {
@@ -95,7 +95,7 @@ commands_config_array = [
         "command": "cuy/dotalive",
         "desc": "Menampilkan jadwal live dota",
         "usage": "cuy/dotalive",
-        "alias": ["dotalive", "dota-live", "dota-stream"],
+        "aliases": ["dotalive", "dota-live", "dota-stream"],
         "cooldown": 5
     },
     {
@@ -104,7 +104,7 @@ commands_config_array = [
         "command": "cuy/tictactoe",
         "desc": "Main Game TicTacToe",
         "usage": "cuy/tictactoe start",
-        "alias": ["tictactoe", "tic"],
+        "aliases": ["tictactoe", "tic"],
         "cooldown": 3
     },
     {
@@ -113,7 +113,7 @@ commands_config_array = [
         "command": "cuy/badut",
         "desc": "Main Game BadutCuy",
         "usage": "cuy/badut start, cuy/atk [1 - 9], cuy/game stop",
-        "alias": ["badut"],
+        "aliases": ["badut"],
         "cooldown": 3
     },
     {
@@ -121,7 +121,7 @@ commands_config_array = [
         "command": "cuy/wallpaper",
         "desc": "Menampilkan random wallpaper",
         "usage": "cuy/wallpaper [genre]",
-        "alias": ["wallpaper", "wp"],
+        "aliases": ["wallpaper", "wp"],
         "cooldown": 5
     },
     {
@@ -129,7 +129,7 @@ commands_config_array = [
         "command": "cuy/ngopi",
         "desc": "Menampilkan random kopi",
         "usage": "cuy/ngopi",
-        "alias": ["ngopi","coffee", "coffee hari ini", "ngopi dulu"],
+        "aliases": ["ngopi","coffee", "coffee hari ini", "ngopi dulu"],
         "cooldown": 5
     },
     {
@@ -137,7 +137,7 @@ commands_config_array = [
         "command": "cuy/usia",
         "desc": "Menampilkan random usia",
         "usage": "cuy/usia [nama]",
-        "alias": ["usia"],
+        "aliases": ["usia"],
         "cooldown": 5
     },
     {
@@ -145,7 +145,7 @@ commands_config_array = [
         "command": "cuy/username",
         "desc": "Menampilkan random username",
         "usage": "cuy/username",
-        "alias": ["username"],
+        "aliases": ["username"],
         "cooldown": 3
     },
     {
@@ -153,7 +153,7 @@ commands_config_array = [
         "command": "cuy/wajah",
         "desc": "Menampilkan random wajah",
         "usage": "cuy/wajah [nama]",
-        "alias": ["wajah", "muka"],
+        "aliases": ["wajah", "muka"],
         "cooldown": 5
     },
     {
@@ -161,7 +161,7 @@ commands_config_array = [
         "command": "cuy/avatar",
         "desc": "Menampilkan random avatar",
         "usage": "cuy/avatar [nama]",
-        "alias": ["avatar"],
+        "aliases": ["avatar"],
         "cooldown": 5
     },
     {
@@ -169,7 +169,7 @@ commands_config_array = [
         "command": "cuy/mlredeem",
         "desc": "mengclaim kode redeem Mobile Legends",
         "usage": "cuy/mlredeem [game id] [kode verifikasi] [kode redeem]",
-        "alias": ["mlredeem", "ml"],
+        "aliases": ["mlredeem", "ml"],
         "cooldown": 5
     },
     {
@@ -177,7 +177,7 @@ commands_config_array = [
         "command": "cuy/rep",
         "desc": "mengasih reputasi kepada anggota",
         "usage": "cuy/rep help",
-        "alias": ["rep"],
+        "aliases": ["rep"],
         "cooldown": 5
     },
     {
@@ -185,7 +185,7 @@ commands_config_array = [
         "command": "cuy/wrcal",
         "desc": "menghitung win rate supaya win rate di game mobile legends menjadi lebih baik",
         "usage": "cuy/wrcal [total match] [total wr] [target wr]",
-        "alias": ["wrcal"],
+        "aliases": ["wrcal"],
         "cooldown": 5
     },
     {
@@ -193,7 +193,7 @@ commands_config_array = [
         "command": "cuy/invite",
         "desc": "Menampilkan pesan invite bot dan support server",
         "usage": "cuy/invite",
-        "alias": ["invite","inv"],
+        "aliases": ["invite","inv"],
         "cooldown": 3
     },
 ]
