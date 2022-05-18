@@ -195,8 +195,40 @@ commands_config_array = [
         "usage": "cuy/invite",
         "aliases": ["invite","inv"],
         "cooldown": 3
-    },
+    }
 ]
 
+
+moderation_config_array = [
+    {
+        "name": "ban",
+        "command": "cuy/ban",
+        "desc": "Ban seseorang dari server",
+        "usage": "cuy/ban [user]",
+        "aliases": ["ban"], 
+        "has_perms": dict(ban_members=True),
+        "bot_has_perms": dict(ban_members=True)
+    },
+    {
+        "name": "unban",
+        "command": "cuy/unban",
+        "desc": "Unban seseorang dari server",
+        "usage": "cuy/ban [user]",
+        "aliases": ["unban"],
+        "has_perms": dict(ban_members=True),
+        "bot_has_perms": dict(ban_members=True)
+    },
+    {
+        "name": "rmspam",
+        "command": "cuy/rmspam",
+        "desc": "Remove spam message, Purge limit on each channel is 5 on default.",
+        "usage": "cuy/rmspam [user] [purge limit on each channel]",
+        "aliases": ['rmspam', 'rmuserspam', 'removespam'],
+        "has_perms": dict(manage_messages=True),
+        "bot_has_perms": dict(manage_messages=True)
+    }
+]
+
+commands_config_array += moderation_config_array
 
 commands_config = {i['name']: i for i in commands_config_array}
