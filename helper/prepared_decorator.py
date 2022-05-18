@@ -4,7 +4,7 @@ from typing import List
 from enum import IntEnum
 
 
-__all__ = ['Cooldown']
+__all__ = ['Command', 'Cooldown', 'HasPerms', 'BotHasPerms']
 
 
 class DecoratorPriority(IntEnum):
