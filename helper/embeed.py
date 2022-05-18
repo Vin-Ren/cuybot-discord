@@ -50,8 +50,8 @@ def embeed_help(color="", arr = {}):
     if len(arr) > 0:
         embed.add_field(name="**Description**", value=f'```{arr["desc"].capitalize()}```', inline=False)
         embed.add_field(name="**Usage**", value=f'```{arr["usage"]}```', inline=False)
-        embed.add_field(name="**Aliases**", value=f'```{", ".join(arr["alias"])}```', inline=True)
-        embed.add_field(name="**Cooldown**", value=f'```{arr["cooldown"]} seconds```', inline=True)
+        embed.add_field(name="**Aliases**", value=f'```{", ".join(arr.get("aliases", []))}```', inline=True) if len(arr.get("aliases", [])) > 0 else None
+        embed.add_field(name="**Cooldown**", value=f'```{arr.get("cooldown", 0)} seconds```', inline=True)
     
     # embed.set_footer(text="Anda juga dapat menyebutkan bot (dengan @) untuk peganti prefix command.")
     
