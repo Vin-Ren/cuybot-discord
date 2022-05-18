@@ -53,6 +53,9 @@ class CommandConfig:
         self.usage = usage
         self.aliases = aliases
         
+        if name in self.aliases:
+            self.aliases.remove(name)
+        
         self.additional_decorators = {e.flag: kwargs.get(e.keyword) if isinstance(kwargs.get(e.keyword), (e.decorator_class, None.__class__)) else e.initializer(kwargs.get(e.keyword)) for e in self.__class__._DECORATORS}
         
         self.flags = flags
